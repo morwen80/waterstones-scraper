@@ -18,9 +18,11 @@ searchBooks(`Harry Potter`)
             const $element = $(element);
             const $image = $element.find('.image-wrap a img');
             const $title = $element.find('.title-wrap a');
+            const $author = $element.find('.author a')
             const book = {
                 cover: $image.attr('src'),
-                title: $title.text()
+                title: $title.text(),
+                author: $author.text()
             };
             books.push(book);
         })
