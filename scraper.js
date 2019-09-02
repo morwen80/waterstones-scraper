@@ -11,7 +11,7 @@ const searchBooks = (title) => {
             const $ = cheerio.load(body);
             $('.inner').each(function(index, element) {
                 const $element = $(element);
-                const $image = $element.find('.image-wrap a img');
+                const $image = $element.find('.book-thumb .image-wrap a img');
                 const $title = $element.find('.title-wrap a');
                 const $author = $element.find('.author a')
                 const book = {
@@ -19,8 +19,12 @@ const searchBooks = (title) => {
                     title: $title.text(),
                     author: $author.text()
                 };
-                books.push(book);
+                if(book.cover) {
+                    books.push(book)
+                };
             })
             return books
         })
 }   
+
+module.exports = { searchBooks }
